@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "298019467148",
+    "project_id": "mercacaiza",
+    "storage_bucket": "mercacaiza.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298019467148:android:edd9d2589ec33e4a44b0a9",
+        "android_client_info": {
+          "package_name": "org.philosophicas.mercacaiza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298019467148-ebjvpbds62matmtml3cec2km6rsakdib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoDUoFsoBxinqQSamVsXkzfG0wkenYDsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298019467148-ebjvpbds62matmtml3cec2km6rsakdib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

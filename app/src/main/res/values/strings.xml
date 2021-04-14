@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MercaCaiza</string>
+    <string name="ok">OK</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="volver">Volver atrás</string>
+    <string name="registro_usuarios">Registro de usuarios</string>
+    <string name="intro_administrar_usuarios">Esta aplicación requiere un usuario registrado. En esta pantalla podrá <b>crear</b> uno si no lo ha hecho o <b>identificarse</b> si ya tiene uno creado anteriormente</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="confirmacion_contrasena">Confirmación de contraseña</string>
+    <string name="crear_usuario">Crear usuario</string>
+    <string name="identificar_usuario">Identificar usuario</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+
+
+
+
+
+
+</resources>
