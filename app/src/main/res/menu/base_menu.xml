@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_base_productos"
+        android:enabled="true"
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/productos"
+        android:visible="true"
+        
+        />
+    <item
+        android:id="@+id/menu_base_tiendas"
+        android:enabled="true"
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/tiendas"
+        android:visible="true" />
+    <item
+        android:id="@+id/menu_base_mi_tienda"
+        android:enabled="true"
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/mi_tienda"
+        android:visible="true" />
+    <item
+        android:id="@+id/menu_base_ajustes"
+        android:enabled="true"
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/ajustes" />
+</menu>

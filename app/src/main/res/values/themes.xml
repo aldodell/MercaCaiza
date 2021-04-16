@@ -15,8 +15,8 @@
     </style>
 
     <style name="encabezados">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">italic|bold</item>
     </style>
 
 </resources>

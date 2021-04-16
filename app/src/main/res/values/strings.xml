@@ -17,8 +17,21 @@
     <string name="usuario_valido">Usuario validado con éxito</string>
     <string name="sesion_cerrada">La sesión se cerró con éxito. Por favor cree un usuario nuevo o valide otro existente para usar esta aplicación.</string>
     <string name="olvidaste_contrasena">¿Olvidaste la contraseña?</string>
-    <string name="instrucciones_regenerar_contrasena">Le será enviado un vínculo a la dirección de correo electrónico que especificó arriba para regenerar la contraseña</string>
+    <string name="instrucciones_regenerar_contrasena">Le será enviado un vínculo a la dirección de correo electrónico que especificó arriba para regenerar la contraseña. Revise ese correo en este dispositivo, haga click en el vínculo que tiene y cuando se le pregunte indique que desea abrir el vínculo con esta aplicación. ¿Desea continuar?</string>
     <string name="renovar_contrasena">Renovar contraseña</string>
     <string name="renovacion_contrasena">Renovación de contraseña</string>
-
+    <string name="error_recobrando_contrasena">No se pudo recobrar la contraseña:</string>
+    <string name="proceso_culminado">Proceso culminado. Su contraseña ha sido guardada. Puede volver a la aplicación luego que se cierre esta ventana.</string>
+    <string name="puede_cambiar_contrasena">Ahora puede cambiar la contraseña</string>
+    <string name="correo_enviado">Se le ha enviado un correo electroníco</string>
+    <string name="productos">Productos</string>
+    <string name="tiendas">Tiendas</string>
+    <string name="mi_tienda">Mi tienda</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="preregistro_tienda_1">Puedes registrar tu propia tienda acá. Ponte en contacto con los desarrolladores para obtener tu pase de entrada.</string>
+    <string name="inserte_llave">Escribe la llave aquí</string>
+    <string name="registrar">Registrar</string>
+    <string name="registrar_tienda">Registrar mi tienda</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

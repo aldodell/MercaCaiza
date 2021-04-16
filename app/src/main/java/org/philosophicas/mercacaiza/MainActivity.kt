@@ -24,12 +24,11 @@ val autorizador = FirebaseAuth.getInstance()
 var usuario: FirebaseUser? = null
 
 
-
 class MainActivity : AppCompatActivity() {
 
 
     //TEMPORAL:
-    lateinit var boton : Button
+    lateinit var boton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +53,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AdministrarUsuario::class.java))
         }
 
+
+        //Vamos al intento base
+        startActivity(Intent(this, Base::class.java))
 
     }
 }

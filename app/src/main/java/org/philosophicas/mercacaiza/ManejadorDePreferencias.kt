@@ -34,4 +34,12 @@ class ManejadorDePreferencias(contexto: Context) {
             return prefs.getString("CONTRASENA", null)
         }
 
+    var tiendaId: String?
+        set(value) {
+            prefs.edit().putString("TIENDA_ID", value).apply()
+        }
+        get() {
+            return prefs.getString("TIENDA_ID", null)
+        }
+
 }

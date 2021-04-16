@@ -9,14 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MercaCaiza">
+        <activity android:name=".Base"></activity>
         <activity android:name=".RecuperarContrasena">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:host="mercacaiza.firebaseapp.com"
-                    android:scheme="https"/>
+                    android:host="mercacaiza.page.link"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity android:name=".AdministrarUsuario" />
