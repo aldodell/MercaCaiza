@@ -3,9 +3,12 @@ package org.philosophicas.mercacaiza
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -18,8 +21,11 @@ class AdministrarUsuario : AppCompatActivity() {
     lateinit var contrasena: EditText
     lateinit var contrasenaConfirmacion: EditText
     lateinit var cerrarSesion: TextView
+    lateinit var olvidasteContrasena: TextView
     lateinit var preferencias: ManejadorDePreferencias
     lateinit var autorizador: FirebaseAuth
+
+    val urlDinamycLink = "https://mercacaiza.page.link/?link=http://www.google.com&apn=org.philosophicas.mercacaiza"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +40,7 @@ class AdministrarUsuario : AppCompatActivity() {
         contrasena = findViewById(R.id.usuarios_contrasena)
         contrasenaConfirmacion = findViewById(R.id.usuarios_contrasena_confirmacion)
         cerrarSesion = findViewById(R.id.usuarios_cerrar_sesion)
+        olvidasteContrasena = findViewById(R.id.usuarios_olvidaste_contrasena)
 
 
         //cofiguraciones visuales:
@@ -41,6 +48,7 @@ class AdministrarUsuario : AppCompatActivity() {
         crearUsuario.paintFlags += Paint.UNDERLINE_TEXT_FLAG
         cerrarSesion.paintFlags += Paint.UNDERLINE_TEXT_FLAG
         identificarUsuario.paintFlags += Paint.UNDERLINE_TEXT_FLAG
+        olvidasteContrasena.paintFlags += Paint.UNDERLINE_TEXT_FLAG
 
 
         //Manejador de preferencias
@@ -61,25 +69,67 @@ class AdministrarUsuario : AppCompatActivity() {
             correoElectronico.isEnabled = false
             contrasena.isEnabled = false
             contrasenaConfirmacion.isEnabled = false
+            crearUsuario.isEnabled = false
+            identificarUsuario.isEnabled = false
         }
+
+
+        //Configuramos cuando contraseña pierda foco
+        contrasena.setOnFocusChangeListener { _, tieneFoco ->
+
+            if (!tieneFoco) {
+                if (contrasena.text.toString().length < 6) {
+                    AlertDialog.Builder(this)
+                        .setMessage(R.string.reglas_de_contrasena)
+                        .setNeutralButton(R.string.ok) { _, _ -> contrasena.requestFocus() }
+                        .show()
+                }
+            }
+        }
+
+        contrasenaConfirmacion.setOnFocusChangeListener { view, tieneFoco ->
+
+            if (!tieneFoco) {
+                if (contrasena.text != contrasenaConfirmacion.text) {
+                    AlertDialog.Builder(this)
+                        .setMessage(R.string.contrasena_no_coincide_con_confirmacion)
+                        .setNeutralButton(R.string.ok) { _, _ -> }
+                        .show()
+                }
+            }
+
+        }
+
 
         //Configuramos la creación de usuarios
         crearUsuario.setOnClickListener {
 
-            autorizador.createUserWithEmailAndPassword(
-                correoElectronico.text.toString().trim(),
-                contrasena.text.toString().trim()
-            )
-                .addOnFailureListener {
-                    AlertDialog.Builder(this)
-                        .setMessage(it.message!!)
-                        .setNeutralButton(R.string.ok) { _, _ -> }
-                }
+            //Revisamos que las contraseña y su confirmación
+            //coincidan
+            if (contrasena.text == contrasenaConfirmacion.text) {
+                autorizador.createUserWithEmailAndPassword(
+                    correoElectronico.text.toString().trim(),
+                    contrasena.text.toString().trim()
+                )
+                    .addOnFailureListener {
+                        AlertDialog.Builder(this)
+                            .setMessage(it.message!!)
+                            .setNeutralButton(R.string.ok) { _, _ -> }
+                            .show()
+                    }
 
-                .addOnSuccessListener {
-                    guardarPreferencias()
-                    finish()
-                }
+                    .addOnSuccessListener {
+                        guardarPreferencias()
+                        finish()
+                    }
+            } else {
+                //Las contraseñas no coinciden:
+                AlertDialog.Builder(this)
+                    .setMessage(R.string.contrasena_no_coincide_con_confirmacion)
+                    .setNeutralButton(R.string.ok) { _, _ -> }
+                    .show()
+
+            }
         }
 
 
@@ -94,9 +144,15 @@ class AdministrarUsuario : AppCompatActivity() {
                     AlertDialog.Builder(this)
                         .setMessage(it.message!!)
                         .setNeutralButton(R.string.ok) { _, _ -> }
+                        .show()
                 }
 
                 .addOnSuccessListener {
+                    Toast.makeText(
+                        this.baseContext,
+                        getString(R.string.usuario_valido),
+                        Toast.LENGTH_LONG
+                    ).show()
                     guardarPreferencias()
                     finish()
                 }
@@ -111,12 +167,51 @@ class AdministrarUsuario : AppCompatActivity() {
             correoElectronico.isEnabled = true
             contrasena.isEnabled = true
             contrasenaConfirmacion.isEnabled = true
+            crearUsuario.isEnabled = true
+            identificarUsuario.isEnabled = true
 
+            AlertDialog.Builder(this)
+                .setMessage(R.string.sesion_cerrada)
+                .setNeutralButton(R.string.ok) { _, _ -> }
+                .show()
 
         }
 
         volverAtras.setOnClickListener {
             finish()
+        }
+
+        //Configuramos el ovido de contraseña
+        olvidasteContrasena.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setMessage(R.string.instrucciones_regenerar_contrasena)
+                .setNeutralButton(R.string.ok) { _, _ ->
+
+                    //Construimos las opciones
+                    val actionCodeSettings = ActionCodeSettings.newBuilder()
+                        .setAndroidPackageName("org.philosophicas.mercacaiza", true, "23")
+                        .setHandleCodeInApp(true)
+                        .setUrl(urlDinamycLink)
+                        //.setDynamicLinkDomain()
+                        .build()
+
+//Pedimos al autorizador que envíe el correo.
+                    autorizador.sendPasswordResetEmail(
+                        correoElectronico.text.toString().trim(),
+                        actionCodeSettings
+                    )
+                        .addOnFailureListener {
+                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                            Log.d("aldox",it.message!!)
+                        }
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Enviado", Toast.LENGTH_LONG).show()
+
+                        }
+
+                }
+                .show()
+
         }
 
 

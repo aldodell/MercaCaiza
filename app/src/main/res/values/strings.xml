@@ -12,11 +12,13 @@
     <string name="crear_usuario">Crear usuario</string>
     <string name="identificar_usuario">Identificar usuario</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
-
-
-
-
-
-
+    <string name="contrasena_no_coincide_con_confirmacion">La contraseña suministrada no coincide con la confirmación. Por favor revise nuevamente su contraseña y la confirmación.</string>
+    <string name="reglas_de_contrasena">La contraseña debe tener al menos 6 caracteres.</string>
+    <string name="usuario_valido">Usuario validado con éxito</string>
+    <string name="sesion_cerrada">La sesión se cerró con éxito. Por favor cree un usuario nuevo o valide otro existente para usar esta aplicación.</string>
+    <string name="olvidaste_contrasena">¿Olvidaste la contraseña?</string>
+    <string name="instrucciones_regenerar_contrasena">Le será enviado un vínculo a la dirección de correo electrónico que especificó arriba para regenerar la contraseña</string>
+    <string name="renovar_contrasena">Renovar contraseña</string>
+    <string name="renovacion_contrasena">Renovación de contraseña</string>
 
 </resources>
