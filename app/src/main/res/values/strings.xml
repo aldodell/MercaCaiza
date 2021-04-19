@@ -32,6 +32,16 @@
     <string name="inserte_llave">Escribe la llave aquí</string>
     <string name="registrar">Registrar</string>
     <string name="registrar_tienda">Registrar mi tienda</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="editor_tienda_nombre">Indica el nombre que tu tienda o comercio verán los usuarios en la aplicación.</string>
+    <string name="editor_tienda_imagen">Selecciona una imagen que identificará a tu tienda. Ten en cuenta que sus dimensiones serán reducidas para se ajuste al tamaño de la aplicación. <i>Haz clic sobre la imagen para abrir la galería.</i></string>
+    <string name="editor_tienda_palabras_clave">Indica las palabras claves que identifican a los productos o servicios que ofreces, separadas por comas. Por ejemplo, si tu comercio es con pan escribe algo así:  <b>pan,canilla,sobado,dulce</b></string>
+    <string name="nombre_tienda_sensacional">¡Mi nombre sensacional!</string>
+    <string name="ejemplo_categorias">pan,canilla,sobado,galletas,jugos,jamón,queso</string>
+    <string name="direccion_fisica">Dirección física</string>
+    <string name="telefono">Teléfono de contacto</string>
+    <string name="guardar">Guardar</string>
+    <string name="nombres_responsable">Nombres y apellidos de la persona responsable</string>
+
+
+
 </resources>

@@ -2,26 +2,26 @@
     <item
         android:id="@+id/menu_base_productos"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/twotone_shopping_bag_black_20"
         android:title="@string/productos"
         android:visible="true"
-        
+
         />
     <item
         android:id="@+id/menu_base_tiendas"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/twotone_storefront_black_18"
         android:title="@string/tiendas"
         android:visible="true" />
     <item
         android:id="@+id/menu_base_mi_tienda"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/twotone_add_business_black_48"
         android:title="@string/mi_tienda"
         android:visible="true" />
     <item
         android:id="@+id/menu_base_ajustes"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/twotone_settings_black_48"
         android:title="@string/ajustes" />
 </menu>

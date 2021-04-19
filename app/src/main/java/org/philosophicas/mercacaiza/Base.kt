@@ -1,16 +1,29 @@
 package org.philosophicas.mercacaiza
 
+import android.app.Activity
+import android.app.IntentService
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MenuItem
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.io.InputStreamReader
+import java.lang.Exception
+import java.util.concurrent.Executor
 
 class Base : AppCompatActivity() {
 
     lateinit var bnv: BottomNavigationView
     lateinit var contenedor: FrameLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +38,7 @@ class Base : AppCompatActivity() {
 
         //Configuramos el botom navigation view
         bnv.setOnNavigationItemSelectedListener(object :
-            BottomNavigationView.OnNavigationItemSelectedListener {
+                BottomNavigationView.OnNavigationItemSelectedListener {
             /**
              * Called when an item in the bottom navigation menu is selected.
              *
@@ -74,11 +87,16 @@ class Base : AppCompatActivity() {
     }
 
 
+
+
     private fun abrirFragmento(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.base_contenedor, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
+
+
 
 }

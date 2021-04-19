@@ -44,10 +44,8 @@ class PreregistroTienda : Fragment() {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_preregistro_tienda, container, false)
-
         llave = view.findViewById(R.id.preregistro_llave)
         btnRegistrar = view.findViewById(R.id.preregistro_registrar)
-
         btnRegistrar.setOnClickListener { registrar() }
 
 
