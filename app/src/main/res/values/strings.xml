@@ -41,7 +41,15 @@
     <string name="telefono">Teléfono de contacto</string>
     <string name="guardar">Guardar</string>
     <string name="nombres_responsable">Nombres y apellidos de la persona responsable</string>
+    <string name="cedula_identidad_rif">Cédula de identidad o RIF</string>
+    <string name="modelo_cedula_rif">V12345678 o J1234567</string>
+    <string name="carga_identificacion">Ahora has clic en el siguiente botón para cargar una imagen de la cédula o del RIF</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="administrar_datos_usuario">Administar datos de usuarios</string>
+    <string name="administrar_mi_tienda">Administrar mi tienda</string>
+    <string name="establecer_valor_dolar">Establecer valor del dólar americano($)</string>
 
-
+    <string name="error_al_guardar">Error guardando datos:</string>
 
 </resources>

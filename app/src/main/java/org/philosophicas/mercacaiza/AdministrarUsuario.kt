@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AdministrarUsuario : AppCompatActivity() {
 
@@ -24,7 +25,8 @@ class AdministrarUsuario : AppCompatActivity() {
     lateinit var preferencias: ManejadorDePreferencias
     lateinit var autorizador: FirebaseAuth
 
-    val urlDinamycLink = "https://mercacaiza.page.link/?link=http://www.google.com&apn=org.philosophicas.mercacaiza"
+    val urlDinamycLink =
+        "https://mercacaiza.page.link/?link=http://www.google.com&apn=org.philosophicas.mercacaiza"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,9 +80,9 @@ class AdministrarUsuario : AppCompatActivity() {
             if (!tieneFoco) {
                 if (contrasena.text.toString().length < 6) {
                     AlertDialog.Builder(this)
-                            .setMessage(R.string.reglas_de_contrasena)
-                            .setNeutralButton(R.string.ok) { _, _ -> contrasena.requestFocus() }
-                            .show()
+                        .setMessage(R.string.reglas_de_contrasena)
+                        .setNeutralButton(R.string.ok) { _, _ -> contrasena.requestFocus() }
+                        .show()
                 }
             }
         }
@@ -90,9 +92,9 @@ class AdministrarUsuario : AppCompatActivity() {
             if (!tieneFoco) {
                 if (contrasena.text != contrasenaConfirmacion.text) {
                     AlertDialog.Builder(this)
-                            .setMessage(R.string.contrasena_no_coincide_con_confirmacion)
-                            .setNeutralButton(R.string.ok) { _, _ -> }
-                            .show()
+                        .setMessage(R.string.contrasena_no_coincide_con_confirmacion)
+                        .setNeutralButton(R.string.ok) { _, _ -> }
+                        .show()
                 }
             }
 
@@ -106,26 +108,26 @@ class AdministrarUsuario : AppCompatActivity() {
             //coincidan
             if (contrasena.text == contrasenaConfirmacion.text) {
                 autorizador.createUserWithEmailAndPassword(
-                        correoElectronico.text.toString().trim(),
-                        contrasena.text.toString().trim()
+                    correoElectronico.text.toString().trim(),
+                    contrasena.text.toString().trim()
                 )
-                        .addOnFailureListener {
-                            AlertDialog.Builder(this)
-                                    .setMessage(it.message!!)
-                                    .setNeutralButton(R.string.ok) { _, _ -> }
-                                    .show()
-                        }
+                    .addOnFailureListener {
+                        AlertDialog.Builder(this)
+                            .setMessage(it.message!!)
+                            .setNeutralButton(R.string.ok) { _, _ -> }
+                            .show()
+                    }
 
-                        .addOnSuccessListener {
-                            guardarPreferencias()
-                            finish()
-                        }
+                    .addOnSuccessListener {
+                        guardarPreferencias()
+                        finish()
+                    }
             } else {
                 //Las contraseñas no coinciden:
                 AlertDialog.Builder(this)
-                        .setMessage(R.string.contrasena_no_coincide_con_confirmacion)
-                        .setNeutralButton(R.string.ok) { _, _ -> }
-                        .show()
+                    .setMessage(R.string.contrasena_no_coincide_con_confirmacion)
+                    .setNeutralButton(R.string.ok) { _, _ -> }
+                    .show()
 
             }
         }
@@ -135,25 +137,25 @@ class AdministrarUsuario : AppCompatActivity() {
         identificarUsuario.setOnClickListener {
 
             autorizador.signInWithEmailAndPassword(
-                    correoElectronico.text.toString().trim(),
-                    contrasena.text.toString().trim()
+                correoElectronico.text.toString().trim(),
+                contrasena.text.toString().trim()
             )
-                    .addOnFailureListener {
-                        AlertDialog.Builder(this)
-                                .setMessage(it.message!!)
-                                .setNeutralButton(R.string.ok) { _, _ -> }
-                                .show()
-                    }
+                .addOnFailureListener {
+                    AlertDialog.Builder(this)
+                        .setMessage(it.message!!)
+                        .setNeutralButton(R.string.ok) { _, _ -> }
+                        .show()
+                }
 
-                    .addOnSuccessListener {
-                        Toast.makeText(
-                                this.baseContext,
-                                getString(R.string.usuario_valido),
-                                Toast.LENGTH_LONG
-                        ).show()
-                        guardarPreferencias()
-                        finish()
-                    }
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        this.baseContext,
+                        getString(R.string.usuario_valido),
+                        Toast.LENGTH_LONG
+                    ).show()
+                    guardarPreferencias()
+                    finish()
+                }
         }
 
         //Configuramos la desconexion de usuarios
@@ -169,9 +171,9 @@ class AdministrarUsuario : AppCompatActivity() {
             identificarUsuario.isEnabled = true
 
             AlertDialog.Builder(this)
-                    .setMessage(R.string.sesion_cerrada)
-                    .setNeutralButton(R.string.ok) { _, _ -> }
-                    .show()
+                .setMessage(R.string.sesion_cerrada)
+                .setNeutralButton(R.string.ok) { _, _ -> }
+                .show()
 
         }
 
@@ -182,34 +184,38 @@ class AdministrarUsuario : AppCompatActivity() {
         //Configuramos el ovido de contraseña
         olvidasteContrasena.setOnClickListener {
             AlertDialog.Builder(this)
-                    .setMessage(R.string.instrucciones_regenerar_contrasena)
-                    .setNegativeButton(R.string.no) { _, _ -> }
-                    .setPositiveButton(R.string.si) { _, _ ->
+                .setMessage(R.string.instrucciones_regenerar_contrasena)
+                .setNegativeButton(R.string.no) { _, _ -> }
+                .setPositiveButton(R.string.si) { _, _ ->
 
-                        //Construimos las opciones
-                        val actionCodeSettings = ActionCodeSettings.newBuilder()
-                                .setAndroidPackageName("org.philosophicas.mercacaiza", true, "23")
-                                .setHandleCodeInApp(true)
-                                .setUrl(urlDinamycLink)
-                                //.setDynamicLinkDomain()
-                                .build()
+                    //Construimos las opciones
+                    val actionCodeSettings = ActionCodeSettings.newBuilder()
+                        .setAndroidPackageName("org.philosophicas.mercacaiza", true, "23")
+                        .setHandleCodeInApp(true)
+                        .setUrl(urlDinamycLink)
+                        //.setDynamicLinkDomain()
+                        .build()
 
 //Pedimos al autorizador que envíe el correo.
-                        autorizador.sendPasswordResetEmail(
-                                correoElectronico.text.toString().trim(),
-                                actionCodeSettings
-                        )
-                                .addOnFailureListener {
-                                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                                    Log.d("aldox", it.message!!)
-                                }
-                                .addOnSuccessListener {
-                                    Toast.makeText(this, getString(R.string.correo_enviado), Toast.LENGTH_LONG).show()
+                    autorizador.sendPasswordResetEmail(
+                        correoElectronico.text.toString().trim(),
+                        actionCodeSettings
+                    )
+                        .addOnFailureListener {
+                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                            Log.d("aldox", it.message!!)
+                        }
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                this,
+                                getString(R.string.correo_enviado),
+                                Toast.LENGTH_LONG
+                            ).show()
 
-                                }
+                        }
 
-                    }
-                    .show()
+                }
+                .show()
 
         }
 
@@ -219,9 +225,32 @@ class AdministrarUsuario : AppCompatActivity() {
 
     //Guarda las preferencias
     fun guardarPreferencias() {
-        preferencias.usuarioId = autorizador.currentUser?.uid
-        preferencias.correoElectronico = correoElectronico.text.toString().trim()
-        preferencias.contrasena = contrasena.text.toString().trim()
+
+        autorizador.currentUser?.let {
+            preferencias.usuarioId = it.uid
+            preferencias.correoElectronico = correoElectronico.text.toString().trim()
+            preferencias.contrasena = contrasena.text.toString().trim()
+
+            val usuario = Usuario.get(
+                it.uid,
+                correoElectronico.text.toString().trim(),
+                contrasena.text.toString()
+            )
+
+
+            val db = FirebaseFirestore.getInstance()
+            db.document("usuarios/$it.uid").set(usuario)
+                .addOnSuccessListener {
+                    Toast.makeText(this,"SUCCESS", Toast.LENGTH_LONG).show()
+
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this,"ERROR SAVING:${it.message}", Toast.LENGTH_LONG).show()
+                }
+
+
+        }
+
     }
 
 }

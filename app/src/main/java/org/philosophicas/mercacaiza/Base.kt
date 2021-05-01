@@ -71,7 +71,7 @@ class Base : AppCompatActivity() {
                     }
 
                     R.id.menu_base_ajustes -> {
-
+                        abrirFragmento(EditorTienda.newInstance("", ""))
                     }
 
                     else -> return false
@@ -87,16 +87,12 @@ class Base : AppCompatActivity() {
     }
 
 
-
-
     private fun abrirFragmento(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.base_contenedor, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
-
 
 
 }

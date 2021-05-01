@@ -45,7 +45,6 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="@string/nombre_tienda_sensacional"
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,16 +52,16 @@
 
             <ImageButton
                 android:id="@+id/editor_tienda_imagen"
-                android:layout_width="256dp"
-                android:layout_height="256dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/material_on_primary_emphasis_high_type"
+                android:background="@color/design_default_color_background"
+                android:contentDescription="@string/app_name"
                 android:scaleType="center"
                 android:src="@drawable/twotone_add_business_black_48"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14"
-                android:contentDescription="TODO" />
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -83,13 +82,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:autofillHints=""
                 android:ems="10"
-                android:hint="@string/ejemplo_categorias"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"
-                android:autofillHints="" />
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -108,13 +106,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:autofillHints=""
+                android:contentDescription="@string/app_name"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16"
-                android:autofillHints="" />
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -144,17 +143,17 @@
                 android:id="@+id/editor_tienda_guardar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="32dp"
                 android:text="@string/guardar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editor_tienda_telefono" />
+                app:layout_constraintTop_toBottomOf="@+id/editor_tienda_cedula_rif_imagen" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="100dp"
                 android:layout_marginEnd="8dp"
                 android:text="@string/app_name"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -196,17 +195,71 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView19"
                 android:autofillHints="" />
 
-            <view
-                android:id="@+id/hp"
-                class="org.philosophicas.mercacaiza.HiperLinkTextView"
+            <TextView
+                android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/ajustes"
+                android:layout_marginTop="16dp"
+                android:text="@string/cedula_identidad_rif"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/ajustes" />
+                app:layout_constraintTop_toBottomOf="@+id/editor_tienda_nombre_responsable" />
+
+            <EditText
+                android:id="@+id/editor_tienda_cedula_rif"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="@string/modelo_cedula_rif"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <ImageButton
+                android:id="@+id/editor_tienda_cedula_rif_imagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/design_default_color_background"
+                android:src="@drawable/twotone_person_add_black_48"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/carga_identificacion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editor_tienda_cedula_rif" />
+
+            <ImageButton
+                android:id="@+id/editor_tienda_imagen_rotar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/design_default_color_background"
+                android:src="@android:drawable/ic_menu_rotate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/editor_tienda_imagen" />
+
+            <ImageButton
+                android:id="@+id/editor_tienda_cedula_imagen_rotar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/design_default_color_background"
+                android:src="@android:drawable/ic_menu_rotate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/editor_tienda_cedula_rif_imagen" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
